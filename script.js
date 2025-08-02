@@ -16,25 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Create a new list item
+        // Create a new list item and set its text content
         const listItem = document.createElement('li');
-        
-        // Create a span for the task text
-        const taskTextSpan = document.createElement('span');
-        taskTextSpan.textContent = taskText;
+        listItem.textContent = taskText;
         
         // Create a remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn';
+        removeButton.classList.add('remove-btn');
         
         // Add click event to remove the task
-        removeButton.addEventListener('click', function() {
+        removeButton.onclick = function() {
             taskList.removeChild(listItem);
-        });
+        };
         
-        // Add elements to the list item
-        listItem.appendChild(taskTextSpan);
+        // Append the remove button to the list item
         listItem.appendChild(removeButton);
         
         // Add the new task to the list
@@ -42,9 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Clear the input field
         taskInput.value = '';
-        
-        // Focus the input field for the next task
-        taskInput.focus();
     }
 
     // Add task when the add button is clicked
@@ -56,7 +49,4 @@ document.addEventListener('DOMContentLoaded', function() {
             addTask();
         }
     });
-
-    // Focus the input field when the page loads
-    taskInput.focus();
 });
